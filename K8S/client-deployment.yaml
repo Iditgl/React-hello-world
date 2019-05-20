@@ -13,7 +13,7 @@ spec:
         component: <APP_TAG>
     spec:
       containers:
-        - name: client
+        - name: <APP_TAG>
           image: <REPO>/<APP>:<TAG>
           ports:
             - containerPort: 3000
