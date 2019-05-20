@@ -20,13 +20,13 @@ pipeline {
     stage('Build image') {
       steps{
         script {
-        app = sh "sudo docker build -t iditg/hello_world:latest ."    
+        app = sh "sudo docker build -t ${env.registry}:latest ."    
       }
     }
 }
     stage('Publish Image') {
       steps {
-          sh "sudo docker push iditg/hello_world:latest"
+          sh "sudo docker push ${env.registry}:latest"
         }
       }
     
