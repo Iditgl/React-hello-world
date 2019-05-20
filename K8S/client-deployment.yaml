@@ -1,19 +1,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: <APP_TAG>-deployment
+  name: react-deployment
 spec:
   replicas: 1
   selector:
     matchLabels:
-      component: <APP_TAG>
+      component: react
   template:
     metadata:
       labels:
-        component: <APP_TAG>
+        component: react
     spec:
       containers:
-        - name: <APP_TAG>
-          image: <REPO>/<APP>:<TAG>
+        - name: react-hello-world
+          image: iditg/hello-world:latest
           ports:
             - containerPort: 3000
