@@ -1,0 +1,34 @@
+pipeline {
+  environment {
+    registry = "iditg/hello-world"
+    registryCredential = 'dockerhub'
+    dockerImage = ''
+  }
+  agent any
+  stages {
+    stage('Clone Git') {
+      steps {
+        git 'https://github.com/Iditgl/react-hello-world.git'
+      }
+    }
+    stage('Start Docker Service') {
+      steps {
+        sh "sudo systemctl enable docker"
+        sh "sudo systemctl start docker"
+      }
+    } 
+    stage('Build image') {
+      steps{
+        script {
+        app = sh "sudo docker build -t iditg/hello_world:latest ."    
+      }
+    }
+}
+    stage('Publish Image') {
+      steps {
+          sh "sudo docker push iditg/jenkins:hello_world"
+        }
+      }
+    
+}    
+}
