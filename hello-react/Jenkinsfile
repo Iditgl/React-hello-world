@@ -26,7 +26,7 @@ pipeline {
 }
     stage('Publish Image') {
       steps {
-          sh "sudo docker push iditg/jenkins:hello_world"
+          sh "sudo docker push iditg/hello_world:latest"
         }
       }
     
