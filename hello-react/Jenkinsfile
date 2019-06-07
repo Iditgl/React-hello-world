@@ -20,20 +20,20 @@ pipeline {
     stage('Build image') {
       steps{
         script {
-        #app = sh "sudo docker build -t ${env.registry}:latest ."
+        //app = sh "sudo docker build -t ${env.registry}:latest ."
 	app = sh "sudo build -t ${env.registry}:${BUILD_NUMBER} ."    
       }
     }
 }
     stage('Publish Image') {
       steps {
-         # sh "sudo docker push ${env.registry}:latest"
+         // sh "sudo docker push ${env.registry}:latest"
            sh "sudo docker push ${env.registry}:${BUILD_NUMBER}"
         }
       }
     
-    #stage('Deploy image to k8s') { 
-    #kubernetesDeploy(kubeconfigId: 'k8s_master',configs: 'my_proj_dep.yml',enableConfigSubstitution: true)
-    #}
+    //stage('Deploy image to k8s') { 
+    //kubernetesDeploy(kubeconfigId: 'k8s_master',configs: 'my_proj_dep.yml',enableConfigSubstitution: true)
+    //}
       }    
 }
