@@ -18,7 +18,7 @@ pipeline {
       }
     } 
     stage('Build image') {
-      steps{
+      steps {
         script {
         //app = sh "sudo docker build -t ${env.registry}:latest ."
 	app = sh "sudo build -t ${env.registry}:${BUILD_NUMBER} ."    
@@ -32,6 +32,11 @@ pipeline {
         }
       }
     
+    stage('Deploy image to k8s') {
+      steps {
+           sh "sudo kubectl apply -f ./client-deployment.yaml"
+        }
+      } 
     //stage('Deploy image to k8s') { 
     //kubernetesDeploy(kubeconfigId: 'k8s_master',configs: 'my_proj_dep.yml',enableConfigSubstitution: true)
     //}
