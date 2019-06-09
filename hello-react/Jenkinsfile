@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Clone Git') {
       steps {
-        git 'https://github.com/Iditgl/react-hello-world.git'
+        git clone -b dev --single-branch 'https://github.com/Iditgl/react-hello-world.git'
       }
     }
     stage('Start Docker Service') {
