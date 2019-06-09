@@ -21,7 +21,7 @@ pipeline {
       steps {
         script {
         //app = sh "sudo docker build -t ${env.registry}:latest ."
-	app = sh "sudo build -t ${env.registry}:${BUILD_NUMBER} ."    
+	app = sh "sudo docker build -t ${env.registry}:${BUILD_NUMBER} ."    
       }
     }
 }
